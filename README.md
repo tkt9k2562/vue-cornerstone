@@ -46,29 +46,19 @@ For files that transpile to WebAssembly, make sure to set the module type in the
  @ ./src/main.js 2:0-28 3:10-13
 ```
 
-However , no matter whether I edit `vue.config.js`
+Then I modify `vue.config.js`
 ```js
-// syncWebAssembly: true
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
     transpileDependencies: true,
     configureWebpack: {
         experiments: {
-            syncWebAssembly: true
-        }
-    },
-})
-
-// Or asyncWebAssembly: true
-const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-    transpileDependencies: true,
-    configureWebpack: {
-        experiments: {
+            syncWebAssembly: true,
             asyncWebAssembly: true
         }
     },
 })
+
 ```
 I will get error
 ```
