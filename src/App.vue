@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    Hello
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import * as cornerstone from "@cornerstonejs/core";
+import * as cornerstoneTools from "@cornerstonejs/tools";
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  mounted() {
+    window.cornerstone = cornerstone;
+
+    /**
+     * FIXME:
+     * ERROR in ./node_modules/@icr/polyseg-wasm/dist/ICRPolySeg.wasm 1:0
+     * Module parse failed: Unexpected character '' (1:0)
+     * The module seem to be a WebAssembly module, but module is not flagged as WebAssembly module for webpack.
+     * BREAKING CHANGE: Since webpack 5 WebAssembly is not enabled by default and flagged as experimental feature.
+     */
+    window.cornerstoneTools = cornerstoneTools;
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
